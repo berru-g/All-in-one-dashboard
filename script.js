@@ -1,3 +1,19 @@
+/*     Fullscreen btn     */
+let fullscreen;
+let fsEnter = document.getElementById('fullscr');
+fsEnter.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!fullscreen) {
+        fullscreen = true;
+        document.documentElement.requestFullscreen();
+        
+    }
+    else {
+        fullscreen = false;
+        document.exitFullscreen();
+       // fsEnter.innerHTML = "Go Fullscreen";
+    }
+});
 
 // Fonction pour formater une valeur en tant que monnaie avec 2 décimales
 function formatCurrency(value) {
@@ -14,7 +30,7 @@ async function updateCryptoValues() {
 
         const ccResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=hifi-finance&vs_currencies=eur');
         const ccData = await ccResponse.json();
-        document.getElementById('cc-value').textContent = formatCurrency(ccData.["hifi-finance"].eur * 10.18);
+        document.getElementById('cc-value').textContent = formatCurrency(ccData.["hifi-finance"].eur * 19.12);
       updateTotal();
 
         // Mettre à jour les valeurs toutes les 60 secondes
