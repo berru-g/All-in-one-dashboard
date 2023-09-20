@@ -1,12 +1,13 @@
 <html lang="en">
-<!-- Dashboard perso, Wallet avec Valeur en temps réel, veuillez changer les noms des crypto dans l'api pour afficher les votres et changer le nombre en votre possesion dans const ccResponse pour avoir votre dash perso ALL IN ONE-->
+<!-- I needed an all in one wallet, I'm happy with the result so I'm sharing. 
+Change your money in the API and their values ​​in the script to constnomcryptoResponse.
+https://github.com/berru-g/All-in-one-dashboard-->
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard berru</title>
   <link rel="shortcut icon" href="img\icons8-facturation-96.png" />
-  <script src="script.js"></script>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -14,6 +15,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
   <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.9.55/css/materialdesignicons.min.css">
 </head>
+
 <body>
   <header>
     <div class="logo">
@@ -36,52 +38,28 @@
   </header>
   <main>
     <div class="crypto-card">
-      <a href="#"><svg viewBox="0 0 448 512" width="100" title="expand">
-          <path
-            d="M0 180V56c0-13.3 10.7-24 24-24h124c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H64v84c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12zM288 44v40c0 6.6 5.4 12 12 12h84v84c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12V56c0-13.3-10.7-24-24-24H300c-6.6 0-12 5.4-12 12zm148 276h-40c-6.6 0-12 5.4-12 12v84h-84c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h124c13.3 0 24-10.7 24-24V332c0-6.6-5.4-12-12-12zM160 468v-40c0-6.6-5.4-12-12-12H64v-84c0-6.6-5.4-12-12-12H12c-6.6 0-12 5.4-12 12v124c0 13.3 10.7 24 24 24h124c6.6 0 12-5.4 12-12z" />
-        </svg></a>
+      <a href="#"><img
+          src="https://github.com/berru-g/All-in-one-dashboard/blob/main/img/icons8-safe-100.png?raw=true" /></a>
       <p>Ledger</p>
       <p id="btc-value">0 €</p>
     </div>
     <div class="crypto-card">
-      <a href="#"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#808080" stroke="#808080">
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-          <g id="SVGRepo_iconCarrier">
-            <style>
-              .st1 {
-                fill: #1a1a1a
-              }
-            </style>
-            <g id="Icon">
-              <circle cx="512" cy="512" r="512" style="fill:#808080"></circle>
-              <path class="st1" d="M404.9 468 512 360.9l107.1 107.2 62.3-62.3L512 236.3 342.6 405.7z"></path>
-              <path transform="rotate(-45.001 298.629 511.998)" class="st1" d="M254.6 467.9h88.1V556h-88.1z"></path>
-              <path class="st1" d="M404.9 556 512 663.1l107.1-107.2 62.4 62.3h-.1L512 787.7 342.6 618.3l-.1-.1z"></path>
-              <path transform="rotate(-45.001 725.364 512.032)" class="st1" d="M681.3 468h88.1v88.1h-88.1z"></path>
-              <path class="st1" d="M575.2 512 512 448.7l-46.7 46.8-5.4 5.3-11.1 11.1-.1.1.1.1 63.2 63.2 63.2-63.3z">
-              </path>
-            </g>
-          </g>
-        </svg></a>
+      <a href="#"><img
+          src="https://github.com/berru-g/All-in-one-dashboard/blob/main/img/icons8-wallet-100.png?raw=true" /></a>
       <p>Binance</p>
       <p id="cc-value">0 €</p>
     </div>
     <div class="crypto-card">
-      <a href="#"><svg viewBox="0 0 640 512" width="100" title="money-bill-alt">
-          <path
-            d="M352 288h-16v-88c0-4.42-3.58-8-8-8h-13.58c-4.74 0-9.37 1.4-13.31 4.03l-15.33 10.22a7.994 7.994 0 0 0-2.22 11.09l8.88 13.31a7.994 7.994 0 0 0 11.09 2.22l.47-.31V288h-16c-4.42 0-8 3.58-8 8v16c0 4.42 3.58 8 8 8h64c4.42 0 8-3.58 8-8v-16c0-4.42-3.58-8-8-8zM608 64H32C14.33 64 0 78.33 0 96v320c0 17.67 14.33 32 32 32h576c17.67 0 32-14.33 32-32V96c0-17.67-14.33-32-32-32zM48 400v-64c35.35 0 64 28.65 64 64H48zm0-224v-64h64c0 35.35-28.65 64-64 64zm272 192c-53.02 0-96-50.15-96-112 0-61.86 42.98-112 96-112s96 50.14 96 112c0 61.87-43 112-96 112zm272 32h-64c0-35.35 28.65-64 64-64v64zm0-224c-35.35 0-64-28.65-64-64h64v64z" />
-        </svg></a>
+      <a href="#"><img
+          src="https://github.com/berru-g/All-in-one-dashboard/blob/main/img/icons8-cash-100.png?raw=true" /></a>
       <p>Cash</p>
       <p id="eur-value">0 €</p>
     </div>
     <div class="crypto-card">
-      <a href="#"><svg viewBox="0 0 576 512" width="100" title="credit-card">
-          <path
-            d="M0 432c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V256H0v176zm192-68c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-40zm-128 0c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM576 80v48H0V80c0-26.5 21.5-48 48-48h480c26.5 0 48 21.5 48 48z" />
-        </svg></a>
+      <a href="#"><img
+          src="https://github.com/berru-g/All-in-one-dashboard/blob/main/img/icons8-bank-cards-100.png?raw=true" /></a>
       <p>Bank</p>
-      <p id="gold-value">620,73 €</p>
+      <p id="gold-value">500,37 €</p>
     </div>
     <!--PAGE 2 -->
     <div class="crypto-card">
@@ -98,7 +76,7 @@
           </g>
         </svg></a>
       <p>Usdt</p>
-      <p id="usdt-value">7,92 $</p>
+      <p id="tether-value">0 €</p>
     </div>
     <div class="crypto-card">
       <a href="#"><svg viewBox="0 0 512 512" width="100" title="donate">
@@ -106,7 +84,7 @@
             d="M256 416c114.9 0 208-93.1 208-208S370.9 0 256 0 48 93.1 48 208s93.1 208 208 208zM233.8 97.4V80.6c0-9.2 7.4-16.6 16.6-16.6h11.1c9.2 0 16.6 7.4 16.6 16.6v17c15.5.8 30.5 6.1 43 15.4 5.6 4.1 6.2 12.3 1.2 17.1L306 145.6c-3.8 3.7-9.5 3.8-14 1-5.4-3.4-11.4-5.1-17.8-5.1h-38.9c-9 0-16.3 8.2-16.3 18.3 0 8.2 5 15.5 12.1 17.6l62.3 18.7c25.7 7.7 43.7 32.4 43.7 60.1 0 34-26.4 61.5-59.1 62.4v16.8c0 9.2-7.4 16.6-16.6 16.6h-11.1c-9.2 0-16.6-7.4-16.6-16.6v-17c-15.5-.8-30.5-6.1-43-15.4-5.6-4.1-6.2-12.3-1.2-17.1l16.3-15.5c3.8-3.7 9.5-3.8 14-1 5.4 3.4 11.4 5.1 17.8 5.1h38.9c9 0 16.3-8.2 16.3-18.3 0-8.2-5-15.5-12.1-17.6l-62.3-18.7c-25.7-7.7-43.7-32.4-43.7-60.1.1-34 26.4-61.5 59.1-62.4zM480 352h-32.5c-19.6 26-44.6 47.7-73 64h63.8c5.3 0 9.6 3.6 9.6 8v16c0 4.4-4.3 8-9.6 8H73.6c-5.3 0-9.6-3.6-9.6-8v-16c0-4.4 4.3-8 9.6-8h63.8c-28.4-16.3-53.3-38-73-64H32c-17.7 0-32 14.3-32 32v96c0 17.7 14.3 32 32 32h448c17.7 0 32-14.3 32-32v-96c0-17.7-14.3-32-32-32z" />
         </svg></a>
       <p>Earn</p>
-      <p id="cc-value">20 €</p>
+      <p id="earn-value">132,39 €</p>
     </div>
     <div class="crypto-card">
       <a href="#"><svg viewBox="0 0 640 512" width="100" title="money-bill">
@@ -114,7 +92,7 @@
             d="M608 64H32C14.33 64 0 78.33 0 96v320c0 17.67 14.33 32 32 32h576c17.67 0 32-14.33 32-32V96c0-17.67-14.33-32-32-32zM48 400v-64c35.35 0 64 28.65 64 64H48zm0-224v-64h64c0 35.35-28.65 64-64 64zm272 176c-44.19 0-80-42.99-80-96 0-53.02 35.82-96 80-96s80 42.98 80 96c0 53.03-35.83 96-80 96zm272 48h-64c0-35.35 28.65-64 64-64v64zm0-224c-35.35 0-64-28.65-64-64h64v64z" />
         </svg></a>
       <p>Dollars</p>
-      <p id="eur-value">1 $</p>
+      <p id="eur-value">0 €</p>
     </div>
     <div class="crypto-card">
       <a href="#"><svg viewBox="0 0 512 512" width="100" title="industry">
@@ -151,7 +129,7 @@
         </path>
       </svg>
       <p>Ethereum</p>
-      <p id="btc-value">0 E</p>
+      <p id="eth-value">0 E</p>
     </div>
     <div class="crypto-card">
       <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 64 64">
@@ -292,7 +270,7 @@
           d="M57.77,28.82c-0.17-1.33-0.43-2.65-0.8-3.92c-0.39-1.36-0.87-2.67-1.47-3.93v-0.01 c-0.76-1.61-1.69-3.12-2.75-4.54c-1.26-1.69-2.72-3.22-4.35-4.55c-1.64-1.35-3.46-2.51-5.42-3.43c-1.95-0.92-4.04-1.6-6.25-2.01 c-0.53-0.1-1.04,0.25-1.14,0.78c-0.1,0.53,0.25,1.04,0.78,1.14c3.92,0.72,7.45,2.39,10.41,4.72c1.79,1.41,3.38,3.06,4.7,4.91 c1.15,1.6,2.11,3.35,2.84,5.2c0.65,1.63,1.13,3.34,1.41,5.11c0.2,1.27,0.32,2.56,0.32,3.88v0.15c0,0.47,0.34,0.84,0.77,0.94 c0.07,0.01,0.14,0.04,0.21,0.04c0.54,0,0.97-0.44,0.97-0.98v-0.15C58,31.03,57.91,29.92,57.77,28.82z">
         </path>
       </svg>
-      <p>Gem</p>
+      <p>Cyber</p>
       <p id="cc-value">0 €</p>
     </div>
     <div class="crypto-card">
@@ -353,10 +331,9 @@
         </path>
       </svg>
       <p>Helico</p>
-      <p id="gold-value">0 €</p>
+      <p id="bnb-value">0 €</p>
     </div>
   </main>
-
   <!-----------button--------------->
   <div class="pag">
     <button id="previous-button"><svg viewBox="0 0 256 512" width="50" title="angle-left">
@@ -368,53 +345,59 @@
           d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z" />
       </svg></button>
   </div>
-
-
   <!-------navbar---------->
   <div class="navbar">
     <div class="search-container">
       <input type="text" id="search-input" placeholder="Rechercher...">
       <button id="search-button">Rechercher</button>
     </div>
-
     <svg id="search-icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
-      viewBox="0 0 24 24">
-      <path d="M22 20L20 22 14 16 14 14 16 14z"></path>
-      <path
-        d="M9,16c-3.9,0-7-3.1-7-7c0-3.9,3.1-7,7-7c3.9,0,7,3.1,7,7C16,12.9,12.9,16,9,16z M9,4C6.2,4,4,6.2,4,9c0,2.8,2.2,5,5,5 c2.8,0,5-2.2,5-5C14,6.2,11.8,4,9,4z">
-      </path>
-      <path d="M13.7 12.5H14.7V16H13.7z" transform="rotate(-44.992 14.25 14.25)"></path>
+      viewBox="0 0 50 50">
+      <polygon fill="#ff9f40"
+        points="41.18,43.37 37.18,45.68 34.63,47.21 29.16,37.61 27,38.86 17,33.08 10,20.96 10,9.41 17,5.37 21,3.06 31,8.83 38,20.96 38,32.51 35.73,33.81">
+      </polygon>
+      <polygon fill="#cc8033" points="41.184,43.369 37.184,45.678 31.735,36.123 35.735,33.813"></polygon>
+      <polygon fill="#66e1ff" points="26,14.03 18,9.412 13,12.298 13,21.536 18,30.196 26,34.815 31,31.928 31,22.691">
+      </polygon>
+      <polygon fill="#e68f3a" points="37.184,45.678 34.634,47.206 29.161,37.609 31.735,36.123"></polygon>
+      <polygon fill="#b3702d" points="34,34.815 38,32.506 38,20.959 34,23.268"></polygon>
+      <polygon fill="#e8913a" points="31,8.834 21,3.061 17,5.37 27,11.144"></polygon>
+      <rect width="4.619" height="14" x="30.191" y="9.051" fill="#cc8033" transform="rotate(-30 32.499 16.052)"></rect>
+      <polygon fill="#57bfd9" points="17,9.989 13,12.298 13,21.536 17,19.226"></polygon>
+      <rect width="4.619" height="10" x="15.191" y="19.711" fill="#5ccae6" transform="rotate(-30 17.499 24.712)"></rect>
+      <polygon fill="#61d6f2" points="22,27.887 18,30.196 26,34.815 30,32.506"></polygon>
     </svg>
-
     <div id="infoButton"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
-        viewBox="0 0 24 24">
-        <path d="M12 3A9 9 0 1 0 12 21A9 9 0 1 0 12 3Z" opacity=".3"></path>
-        <path d="M13,17h-2v-6h2V17z M13,9h-2V7h2V9z"></path>
-        <path fill="none" stroke="#808080" stroke-miterlimit="10" stroke-width="2"
-          d="M12 3A9 9 0 1 0 12 21A9 9 0 1 0 12 3Z"></path>
+        viewBox="0 0 50 50">
+        <polygon fill="#57e66f"
+          points="41,20.38 41,38.86 30,45.21 8,32.51 8,14.03 16,9.41 16,8.26 20,5.95 23,4.22 30,8.26 33,13.45 33,15.76">
+        </polygon>
+        <polygon fill="#61ff7b" points="30,26.732 30,45.207 8,32.506 8,14.03"></polygon>
+        <polygon fill="#44b356" points="30,26.732 30,45.207 40.998,38.856 41,20.381"></polygon>
+        <polygon fill="#a8a8a8" points="20,5.947 23,4.215 30,8.257 27,9.989"></polygon>
+        <rect width="3.464" height="6" x="28.268" y="8.721" fill="#8c8c8c" transform="rotate(-30 30 11.722)"></rect>
+        <polygon fill="#737373" points="30,22.113 30,15.185 33,13.453 33,20.381"></polygon>
+        <polygon fill="#737373" points="19,15.762 19,11.144 21,9.989 22,10.566 22,14.03"></polygon>
+        <polygon fill="#ccc"
+          points="27,9.989 20,5.947 16,8.257 16,14.03 19,15.762 19,11.144 21,9.989 25,12.298 27,15.762 27,20.381 30,22.113 30,15.185">
+        </polygon>
+        <polygon fill="#ccc" points="12,25.577 12,27.887 14,29.041 14,26.732"></polygon>
+        <polygon fill="#a8a8a8" points="12,25.577 13,25 15,26.155 14,26.732"></polygon>
+        <polygon fill="#737373" points="15,26.155 15,28.464 14,29.041 14,26.732"></polygon>
+        <polygon fill="#ccc" points="17,28.464 17,30.774 19,31.928 19,29.619"></polygon>
+        <polygon fill="#a8a8a8" points="17,28.464 18,27.887 20,29.041 19,29.619"></polygon>
+        <polygon fill="#737373" points="20,29.041 20,31.351 19,31.928 19,29.619"></polygon>
+        <polygon fill="#ccc" points="22,31.351 22,33.66 24,34.815 24,32.506"></polygon>
+        <polygon fill="#a8a8a8" points="22,31.351 23,30.774 25,31.928 24,32.506"></polygon>
+        <polygon fill="#737373" points="25,31.928 25,34.238 24,34.815 24,32.506"></polygon>
       </svg></div>
-
-    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
-      <path
-        d="M22 8h-5V6h3V5c0-.6-.4-1-1-1h-2V2h2c1.7 0 3 1.3 3 3V8zM14 22H5c-1.7 0-3-1.3-3-3v-3h11v2H4v1c0 .6.4 1 1 1h9V22z">
-      </path>
-      <path
-        d="M15 22c-1.6 0-3-1.3-3-3l0-3 2 0 0 3c0 .5.5 1 1 1 0 0 0 0 0 0L15 22C15 22 15 22 15 22zM7 17H5V5c0-1.7 1.3-3 3-3h11v2H8C7.4 4 7 4.4 7 5V17z">
-      </path>
-      <path d="M15,22h-1v-2h1c0.6,0,1-0.4,1-1V5c0-1.7,1.3-3,3-3v2c-0.6,0-1,0.4-1,1v14C18,20.7,16.7,22,15,22z"></path>
-      <path d="M6,3v14h7v2c0,1.1,0.9,2,2,2l0,0c1.1,0,2-0.9,2-2V3H6z" opacity=".3"></path>
-    </svg>
-
+    <img src="https://github.com/berru-g/All-in-one-dashboard/blob/main/img/paper.png?raw=true" />
     <button id="fullscr">
-      <svg viewBox="0 0 448 512" width="100" title="compress">
-        <path
-          d="M436 192H312c-13.3 0-24-10.7-24-24V44c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v84h84c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm-276-24V44c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v84H12c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h124c13.3 0 24-10.7 24-24zm0 300V344c0-13.3-10.7-24-24-24H12c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h84v84c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-84h84c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12H312c-13.3 0-24 10.7-24 24v124c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12z" />
-      </svg>
+      <img src="https://github.com/berru-g/All-in-one-dashboard/blob/main/img/full.png?raw=true" />
     </button>
   </div>
-
+  <script src="script.js"></script>
   <p id="percentage-change"></p>
-
   <!--------------widget--------------->
   <h3></h3>
   <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="200" height="200" viewBox="0 0 50 50">
@@ -428,40 +411,37 @@
   <div id="chart-container">
     <canvas id="price-chart"></canvas>
   </div>
-
   <script src="https://widgets.coingecko.com/coingecko-coin-compare-chart-widget.js"></script>
   <coingecko-coin-compare-chart-widget coin-ids="bitcoin,hifi-finance,cyberconnect,binancecoin" currency="eur"
     locale="fr"></coingecko-coin-compare-chart-widget>
-
   <script src="https://widgets.coingecko.com/coingecko-coin-list-widget.js"></script>
   <coingecko-coin-list-widget coin-ids="bitcoin,binancecoin,cyberconnect,hifi-finance" currency="eur"
     locale="fr"></coingecko-coin-list-widget>
-
-  <footer class="footer">
-    <div class="footer-columns">
-      <div class="footer-column">
-        <h3 class="footer-title">Profil</h3>
-        <a href="#" class="footer-link">Wallet</a>
-        <a href="#" class="footer-link">Earn</a>
-        <a href="#" class="footer-link">Trade</a>
-      </div>
-      <div class="footer-column">
-        <h3 class="footer-title">Info</h3>
-        <a href="#" class="footer-link">Carte</a>
-        <a href="#" class="footer-link">NFT</a>
-        <a href="#" class="footer-link">N°420</a>
-      </div>
-      <div class="footer-column">
-        <h3 class="footer-title">Developper</h3>
-        <a href="https://github.com/berru-g/berru-g/blob/main/skill.md" class="footer-link">Dev</a>
-        <a href="https://icons8.com" class="footer-link">Icone</a>
-        <a href="https://www.coingecko.com/fr" class="footer-link">API</a>
-        <a href="https://github.com/berru-g" class="footer-link">Contact</a>
-      </div>
-    </div>
 </body>
+<footer class="footer">
+  <div class="footer-columns">
+    <div class="footer-column">
+      <h3 class="footer-title">Profil</h3>
+      <a href="#" class="footer-link">Wallet</a>
+      <a href="#" class="footer-link">Earn</a>
+      <a href="#" class="footer-link">Trade</a>
+    </div>
+    <div class="footer-column">
+      <h3 class="footer-title">Info</h3>
+      <a href="#" class="footer-link">Carte</a>
+      <a href="#" class="footer-link">NFT</a>
+      <a href="#" class="footer-link">N°420</a>
+    </div>
+    <div class="footer-column">
+      <h3 class="footer-title">Developper</h3>
+      <a href="https://github.com/berru-g/berru-g/blob/main/skill.md" class="footer-link">Dev</a>
+      <a href="https://icons8.com" class="footer-link">Icone</a>
+      <a href="https://www.coingecko.com/fr" class="footer-link">API</a>
+      <a href="https://github.com/berru-g" class="footer-link">Contact</a>
+    </div>
+  </div>
+  </body>
 </footer>
-
 </body>
 
 </html>

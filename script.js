@@ -6,7 +6,7 @@ fsEnter.addEventListener('click', function (e) {
     if (!fullscreen) {
         fullscreen = true;
         document.documentElement.requestFullscreen();
-        
+        const cardsPerPage = 8;
     }
     else {
         fullscreen = false;
@@ -27,10 +27,14 @@ async function updateCryptoValues() {
         const btcResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur');
         const btcData = await btcResponse.json();
         document.getElementById('btc-value').textContent = formatCurrency(btcData.bitcoin.eur * 0.0209807);
+//0.0209807
+        const tetherResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=eur');
+        const tetherData = await tetherResponse.json();
+        document.getElementById('tether-value').textContent = formatCurrency(tetherData.tether.eur * 127.1847);
 
         const ccResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=hifi-finance&vs_currencies=eur');
         const ccData = await ccResponse.json();
-        document.getElementById('cc-value').textContent = formatCurrency(ccData.["hifi-finance"].eur * 19.12);
+        document.getElementById('cc-value').textContent = formatCurrency(ccData.["hifi-finance"].eur * 19.1243);
       updateTotal();
 
         // Mettre à jour les valeurs toutes les 60 secondes
@@ -45,7 +49,7 @@ async function updateCryptoValues() {
   */
 console.log('api OK');
 
-// Fonction pour mettre à jour la date et l'heure en temps réel
+// Fonction pour mettre à jour la date et l'heure en temps réel 
 function updateDateTime() {
     const now = new Date();
     document.getElementById('date').textContent = now.toLocaleDateString('fr-FR');
@@ -57,16 +61,18 @@ function updateTotal() {
     const btcValue = parseFloat(document.getElementById('btc-value').textContent);
     const ccValue = parseFloat(document.getElementById('cc-value').textContent);
     const euroValue = parseFloat(document.getElementById('eur-value').textContent);
-  const goldValue = parseFloat(document.getElementById('gold-value').textContent);
+    const goldValue = parseFloat(document.getElementById('gold-value').textContent);
+    const tetherValue = parseFloat(document.getElementById('tether-value').textContent);
 
     console.log("btcValue:", btcValue);
     console.log("ccValue:", ccValue);
     console.log("euroValue:", euroValue);
     console.log("goldValue:", goldValue);
+    console.log("tetherValue:", tetherValue);
     console.log('____');
  
-    if (!isNaN(btcValue) && !isNaN(ccValue) && !isNaN(euroValue) && !isNaN(goldValue)) {
-        const total = btcValue + ccValue + euroValue + goldValue;
+    if (!isNaN(btcValue) && !isNaN(ccValue) && !isNaN(euroValue) && !isNaN(goldValue) && !isNaN(tetherValue)) {
+        const total = btcValue + ccValue + euroValue + goldValue + tetherValue;
       //couille ici
         console.log("total", total);
         document.getElementById('total-value').textContent = formatCurrency(total);
@@ -87,9 +93,10 @@ function updatePercentageChange(baseValue) {
     const ccValue = parseFloat(document.getElementById('cc-value').textContent);
     const euroValue = parseFloat(document.getElementById('eur-value').textContent);
     const goldValue = parseFloat(document.getElementById('gold-value').textContent);
+    const tetherValue = parseFloat(document.getElementById('tether-value').textContent);
 
-    if (!isNaN(btcValue) && !isNaN(ccValue) && !isNaN(euroValue) && !isNaN(goldValue)) {
-        const total = btcValue + ccValue + euroValue + goldValue;
+    if (!isNaN(btcValue) && !isNaN(ccValue) && !isNaN(euroValue) && !isNaN(goldValue) && !isNaN(tetherValue)) {
+        const total = btcValue + ccValue + euroValue + goldValue + tetherValue;
 
         // Calculer la variation en pourcentage par rapport à la valeur de base
         const percentageChange = ((total - baseValue) / baseValue) * 100;
@@ -97,10 +104,10 @@ function updatePercentageChange(baseValue) {
         const percentageChangeElement = document.getElementById('percentage-change');
 
         if (percentageChange >= 0) {
-            percentageChangeElement.style.color = 'green';
+            percentageChangeElement.style.color = '#163132';
             percentageChangeElement.textContent = `+${percentageChange.toFixed(1)}%`;
         } else {
-            percentageChangeElement.style.color = 'red';
+            percentageChangeElement.style.color = '#e1c33a';
             percentageChangeElement.textContent = `${percentageChange.toFixed(1)}%`;
         }
     }
@@ -114,9 +121,10 @@ async function updateTotalAndPercentage() {
     const ccValue = parseFloat(document.getElementById('cc-value').textContent);
     const euroValue = parseFloat(document.getElementById('eur-value').textContent);
     const goldValue = parseFloat(document.getElementById('gold-value').textContent);
+    const tetherValue = parseFloat(document.getElementById('tether-value').textContent);
 
-    if (!isNaN(btcValue) && !isNaN(ccValue) && !isNaN(euroValue) && !isNaN(goldValue)) {
-        const total = btcValue + ccValue + euroValue + goldValue;
+    if (!isNaN(btcValue) && !isNaN(ccValue) && !isNaN(euroValue) && !isNaN(goldValue) && !isNaN(tetherValue)) {
+        const total = btcValue + ccValue + euroValue + goldValue + tetherValue;
 
         // Mettre à jour la div "total-value"
         document.getElementById('total-value').textContent = formatCurrency(total);
@@ -128,7 +136,7 @@ async function updateTotalAndPercentage() {
     }
 }
 
-// Appeler la fonction initiale
+// Appeler la fonction initiale FIN API
 updateTotalAndPercentage();
 
 

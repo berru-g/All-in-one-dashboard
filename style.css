@@ -186,9 +186,16 @@ main {
   color: #fff;
   fill: #fff;
 }
+img {
+  fill: grey;
+	max-width: 50px;
+	height: auto;
+  animation-name: bounce-in-top;
+  animation-duration: 2s;
+}
 svg {
 	fill: grey;
-	max-width: 40px;
+	max-width: 50px;
 	height: auto;
   animation-name: bounce-in-top;
   animation-duration: 2s;
@@ -202,6 +209,9 @@ svg {
     transform: translateY(0); 
     opacity: 1;
   }
+}
+img:hover {
+  scale: 1.1;
 }
 svg:hover {
 	/*filter: drop-shadow(0px 0px 20px white)*/
@@ -217,7 +227,7 @@ button {
   border: none;
 }
 button:hover {
-  fill: #efb80a;
+  fill: red;
 }
 .navbar {
   width: 85%;
@@ -232,10 +242,12 @@ button:hover {
   display: flex;
     justify-content: space-between;
     align-items: center;
-    backdrop-filter: blur(1px);
+    backdrop-filter: blur(4px);
   color: grey;
 }
-
+#fullscr-enter, #fullscr-exit {
+  display: visible;
+}
 .search-container {
   display: none;
   position: absolute;
