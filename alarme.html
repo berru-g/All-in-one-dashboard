@@ -1,0 +1,43 @@
+<div>
+    <p>TRB: <span id="prix-trb"></span></p>
+    <audio id="audio" controls>
+      <source src="https://github.com/berru-g/console-play-music/raw/master/son/FL_HHL_Green_078_Guitars.wav" type="audio/mpeg">
+      Votre navigateur ne supporte pas l'élément audio.
+    </audio>
+  </div>
+<script>
+    const coinGeckoURL = "https://api.coingecko.com/api/v3/simple/price";
+const params = {
+  ids: "tellor",
+  vs_currencies: "usd",
+};
+
+const seuilSuperieur = 59; 
+const seuilInferieur = 55; 
+
+const prixTRBElement = document.getElementById("prix-trb");
+const audioElement = document.getElementById("audio");
+
+function fetchPrixTRB() {
+  fetch(`${coinGeckoURL}?${new URLSearchParams(params)}`)
+    .then((response) => response.json())
+    .then((data) => {
+      const prixTRB = data.tellor.usd;
+      prixTRBElement.textContent = prixTRB + " USD";
+
+      if (prixTRB > seuilSuperieur) {
+        console.log("Le prix TRB a dépassé 60 USD!");
+        audioElement.play();
+      } else if (prixTRB < seuilInferieur) {
+        console.log("Le prix TRB est passé en dessous de 45 USD!");
+        audioElement.play();
+      }
+    })
+    .catch((error) => {
+      console.error("Erreur lors de la récupération des données de CoinGecko:", error);
+    });
+}
+
+setInterval(fetchPrixTRB, 10000); 
+fetchPrixTRB(); 
+</script>  
