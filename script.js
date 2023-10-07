@@ -27,14 +27,14 @@ async function updateCryptoValues() {
         const btcResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur');
         const btcData = await btcResponse.json();
         document.getElementById('btc-value').textContent = formatCurrency(btcData.bitcoin.eur * 0.0209807);
-//0.0209807
+//0.0209807 + 0.0143285
         const tetherResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=eur');
         const tetherData = await tetherResponse.json();
-        document.getElementById('tether-value').textContent = formatCurrency(tetherData.tether.eur * 127.1847);
+        document.getElementById('tether-value').textContent = formatCurrency(tetherData.tether.eur * 22);
 
         const ccResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=hifi-finance&vs_currencies=eur');
         const ccData = await ccResponse.json();
-        document.getElementById('cc-value').textContent = formatCurrency(ccData.["hifi-finance"].eur * 19.1243);
+        document.getElementById('cc-value').textContent = formatCurrency(ccData.["hifi-finance"].eur * 1.4);
       updateTotal();
 
         // Mettre à jour les valeurs toutes les 60 secondes
