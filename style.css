@@ -72,7 +72,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 20px;
-    background: black;
+    background: transparent;
     backdrop-filter: blur(1px);
   box-shadow: 0 0 5px grey;
   color: grey;
@@ -265,6 +265,17 @@ button:hover {
 .search-container.hidden {
   transform: scale(0);
 }
+
+        #message {
+            background-color: transparent;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 0 auto;
+            margin-top: 0px;
+        }
+audio{visibility:hidden;}
 
 #price-chart {
   width 100%;

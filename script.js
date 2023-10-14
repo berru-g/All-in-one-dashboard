@@ -30,11 +30,12 @@ async function updateCryptoValues() {
 //0.0209807 + 0.0143285
         const tetherResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=eur');
         const tetherData = await tetherResponse.json();
-        document.getElementById('tether-value').textContent = formatCurrency(tetherData.tether.eur * 22);
+        document.getElementById('tether-value').textContent = formatCurrency(tetherData.tether.eur * 2);
 
-        const ccResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=hifi-finance&vs_currencies=eur');
+        const ccResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=eur');
         const ccData = await ccResponse.json();
-        document.getElementById('cc-value').textContent = formatCurrency(ccData.["hifi-finance"].eur * 1.4);
+      document.getElementById('cc-value').textContent = formatCurrency(ccData.binancecoin.eur * 1.21);
+        //document.getElementById('cc-value').textContent = formatCurrency(ccData.["hifi-finance"].eur * 1.4);
       updateTotal();
 
         // Mettre à jour les valeurs toutes les 60 secondes
@@ -260,8 +261,75 @@ document.addEventListener('click', (e) => {
   }
 });
 
+//Alarm---------------------------
+const coinGeckoURL = "https://api.coingecko.com/api/v3/simple/price";
+  const params = {
+    ids: "loom-network-new",
+    vs_currencies: "usd",
+  };
 
-//info
+  const seuilSuperieur = 0.40;
+  const seuilInferieur = 0.35;
+
+  const prixTRBElement = document.getElementById("prix-trb");
+  const audioElement = document.getElementById("audio");
+
+  function setElementVisibility(element, visible) {
+    element.style.visibility = visible ? 'visible' : 'hidden';
+  }
+
+  function updateBackgroundColor(color) {
+    message.style.backgroundColor = color;
+  }
+
+  function playAudio() {
+    audioElement.play();
+  }
+
+function handlePriceChange(prixTRB) {
+  prixTRBElement.textContent = prixTRB + " USD";
+
+  updateMontantTotal(prixTRB);
+
+  if (prixTRB > seuilSuperieur) {
+    console.log("Gain");
+    updateBackgroundColor('lightgreen');
+    setElementVisibility(document.querySelector('img'), true);
+    playAudio();
+  } else if (prixTRB < seuilInferieur) {
+    console.log("Perte");
+    updateBackgroundColor('lightcoral');
+    setElementVisibility(document.querySelector('img'), true);
+    playAudio();
+  }
+}
+
+
+  function fetchPrixTRB() {
+    fetch(`${coinGeckoURL}?${new URLSearchParams(params)}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const prixTRB = data["loom-network-new"].usd;
+        handlePriceChange(prixTRB);
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la récupération des données de CoinGecko:", error);
+      });
+  }
+
+const montantTotalTRBElement = document.getElementById("montant-total-trb");
+
+function updateMontantTotal(prixTRB) {
+  const montantTotal = prixTRB * 3180.73;
+  montantTotalTRBElement.textContent = montantTotal + " USD";
+}
+
+
+  console.log("en cours");
+  setInterval(fetchPrixTRB, 10000);
+  fetchPrixTRB();
+
+//info---------------------------------
 const infoButton = document.getElementById('infoButton');
 infoButton.addEventListener('click', () => {
 Swal.fire({
