@@ -269,7 +269,7 @@ const coinGeckoURL = "https://api.coingecko.com/api/v3/simple/price";
   };
 
   const seuilSuperieur = 0.40;
-  const seuilInferieur = 0.35;
+  const seuilInferieur = 0.05;
 
   const prixTRBElement = document.getElementById("prix-trb");
   const audioElement = document.getElementById("audio");
