@@ -6,7 +6,7 @@ fsEnter.addEventListener('click', function (e) {
     if (!fullscreen) {
         fullscreen = true;
         document.documentElement.requestFullscreen();
-        const cardsPerPage = 8;
+        const cardsPerPage = 4;
     }
     else {
         fullscreen = false;
