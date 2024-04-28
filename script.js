@@ -32,9 +32,9 @@ async function updateCryptoValues() {
         const tetherData = await tetherResponse.json();
         document.getElementById('tether-value').textContent = formatCurrency(tetherData.tether.eur * 2);
 
-        const ccResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=eur');
+        const ccResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=fetch-ai&vs_currencies=eur');
         const ccData = await ccResponse.json();
-      document.getElementById('cc-value').textContent = formatCurrency(ccData.binancecoin.eur * 1.21);
+      document.getElementById('cc-value').textContent = formatCurrency(ccData.fetchai.eur * 7.26);
         //document.getElementById('cc-value').textContent = formatCurrency(ccData.["hifi-finance"].eur * 1.4);
       updateTotal();
 
