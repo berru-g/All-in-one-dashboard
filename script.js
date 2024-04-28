@@ -1,4 +1,4 @@
-/*     Fullscreen btn     */
+//     Fullscreen btn 
 let fullscreen;
 let fsEnter = document.getElementById('fullscr');
 fsEnter.addEventListener('click', function (e) {
@@ -6,7 +6,7 @@ fsEnter.addEventListener('click', function (e) {
     if (!fullscreen) {
         fullscreen = true;
         document.documentElement.requestFullscreen();
-        const cardsPerPage = 4;
+        const cardsPerPage = 8;
     }
     else {
         fullscreen = false;
@@ -34,7 +34,7 @@ async function updateCryptoValues() {
 
         const ccResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=fetch-ai&vs_currencies=eur');
         const ccData = await ccResponse.json();
-      document.getElementById('cc-value').textContent = formatCurrency(ccData.fetchai.eur * 7.26);
+      document.getElementById('cc-value').textContent = formatCurrency(ccData.["fetch-ai"].eur * 7.26);
         //document.getElementById('cc-value').textContent = formatCurrency(ccData.["hifi-finance"].eur * 1.4);
       updateTotal();
 
