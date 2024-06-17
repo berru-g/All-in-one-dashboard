@@ -1,4 +1,4 @@
-/*     Fullscreen btn     */
+//     Fullscreen btn 
 let fullscreen;
 let fsEnter = document.getElementById('fullscr');
 fsEnter.addEventListener('click', function (e) {
@@ -32,9 +32,9 @@ async function updateCryptoValues() {
         const tetherData = await tetherResponse.json();
         document.getElementById('tether-value').textContent = formatCurrency(tetherData.tether.eur * 2);
 
-        const ccResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=eur');
+        const ccResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=fetch-ai&vs_currencies=eur');
         const ccData = await ccResponse.json();
-      document.getElementById('cc-value').textContent = formatCurrency(ccData.binancecoin.eur * 1.21);
+      document.getElementById('cc-value').textContent = formatCurrency(ccData.["fetch-ai"].eur * 7.26);
         //document.getElementById('cc-value').textContent = formatCurrency(ccData.["hifi-finance"].eur * 1.4);
       updateTotal();
 
@@ -269,7 +269,7 @@ const coinGeckoURL = "https://api.coingecko.com/api/v3/simple/price";
   };
 
   const seuilSuperieur = 0.40;
-  const seuilInferieur = 0.35;
+  const seuilInferieur = 0.05;
 
   const prixTRBElement = document.getElementById("prix-trb");
   const audioElement = document.getElementById("audio");
